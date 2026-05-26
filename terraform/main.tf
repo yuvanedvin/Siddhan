@@ -14,7 +14,7 @@ terraform {
   # Replace the bucket name below with the value of the `state_bucket`
   # output from `terraform -chdir=bootstrap apply`.
   backend "s3" {
-    bucket       = "yuvan-siddhan-webapp-tfstate"
+    bucket       = "yuvan-webapp-tfstate-2026"
     key          = "webapp/dev/terraform.tfstate"
     region       = "ap-south-2"
     profile      = "siddhan" # CLI profile for backend auth (local dev)

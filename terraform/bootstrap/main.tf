@@ -1,17 +1,3 @@
-# ----------------------------------------------------------------------------
-# Bootstrap module — creates the S3 bucket used by the main project as its
-# remote backend.
-#
-# This module is run ONCE, BEFORE the main project. It uses local state
-# (intentional: you can't store the backend's own state in the backend itself).
-# Commit the local state file or, better, keep it safe somewhere — it rarely
-# changes, but you need it to manage the bucket later.
-#
-# State locking: Terraform 1.10+ does native S3 locking (use_lockfile = true).
-# No DynamoDB table required. If you're stuck on TF < 1.10, see the
-# commented DynamoDB resource at the bottom of this file.
-# ----------------------------------------------------------------------------
-
 terraform {
   required_version = ">= 1.10.0"
 
@@ -89,19 +75,3 @@ resource "aws_s3_bucket_lifecycle_configuration" "tf_state" {
   }
 }
 
-# ----------------------------------------------------------------------------
-# Optional: legacy DynamoDB-based locking for Terraform < 1.10.
-# Uncomment this and set use_lockfile=false in the main backend block if you
-# specifically need DynamoDB locking instead of S3 native locking.
-# ----------------------------------------------------------------------------
-#
-# resource "aws_dynamodb_table" "tf_locks" {
-#   name         = "${var.state_bucket_name}-locks"
-#   billing_mode = "PAY_PER_REQUEST"
-#   hash_key     = "LockID"
-#
-#   attribute {
-#     name = "LockID"
-#     type = "S"
-#   }
-# }
