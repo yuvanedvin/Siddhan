@@ -1,11 +1,11 @@
-{
+﻿{
   "family": "webapp-dev-task",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512",
-  "executionRoleArn": "REPLACE_WITH_EXECUTION_ROLE_ARN",
-  "taskRoleArn": "REPLACE_WITH_TASK_ROLE_ARN",
+  "executionRoleArn": "arn:aws:iam::431684229532:role/webapp-dev-task-execution",
+  "taskRoleArn": "arn:aws:iam::431684229532:role/webapp-dev-task",
   "containerDefinitions": [
     {
       "name": "app",
