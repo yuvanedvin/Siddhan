@@ -22,7 +22,7 @@ Actions, and monitored with CloudWatch.
 ![GitHub Actions](docs/screenshots/Deployment.png)
 
 ### CloudWatch dashboard — ALB + ECS metrics
-![CloudWatch](docs/screenshots/cloudwatch/Metrics and Monitoring.png)
+![CloudWatch](docs/screenshots/cloudwatch/Metrics.png)
 ---
 
 ## Requirements coverage
