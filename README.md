@@ -19,10 +19,11 @@ Actions, and monitored with CloudWatch.
 ![Dashboard](docs/screenshots/dashboard.png)
 
 ### CI/CD pipeline — GitHub Actions
-![GitHub Actions](docs/screenshots/github-actions.png)
+![GitHub Actions](docs/screenshots/Deployment.png)
 
 ### CloudWatch dashboard — ALB + ECS metrics
-![CloudWatch](docs/screenshots/cloudwatch.png)
+![CloudWatch](docs/screenshots/cloudwatch/Metrics and Monitoring.png)
+![Logs](docs/screenshots/cloudwatch/Logs.png)
 
 ---
 
