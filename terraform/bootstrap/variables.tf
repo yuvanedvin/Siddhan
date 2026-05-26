@@ -10,7 +10,7 @@ S3 bucket name for Terraform remote state.
 
 Must be globally unique across all of AWS. Use a pattern like:
   <yourname>-<project>-tfstate-<account_id_suffix>
-e.g. "santhosh-webapp-tfstate-7421"
+e.g. "yuvan-webapp-tfstate-2026"
 EOT
   type        = string
 
