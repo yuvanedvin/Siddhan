@@ -1,31 +1,52 @@
 ﻿{
-  "family": "webapp-dev-task",
-  "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512",
-  "executionRoleArn": "arn:aws:iam::431684229532:role/webapp-dev-task-execution",
-  "taskRoleArn": "arn:aws:iam::431684229532:role/webapp-dev-task",
-  "containerDefinitions": [
-    {
-      "name": "app",
-      "image": "PLACEHOLDER_IMAGE",
-      "essential": true,
-      "portMappings": [
-        { "containerPort": 8080, "protocol": "tcp" }
-      ],
-      "environment": [
-        { "name": "APP_ENV", "value": "dev" },
-        { "name": "PORT", "value": "8080" }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/webapp-dev",
-          "awslogs-region": "ap-south-2",
-          "awslogs-stream-prefix": "app"
-        }
-      }
-    }
-  ]
+    "family":  "webapp-dev-task",
+    "networkMode":  "awsvpc",
+    "requiresCompatibilities":  [
+                                    "FARGATE"
+                                ],
+    "cpu":  "256",
+    "memory":  "512",
+    "executionRoleArn":  "arn:aws:iam::431684229532:role/webapp-dev-task-execution",
+    "taskRoleArn":  "arn:aws:iam::431684229532:role/webapp-dev-task",
+    "containerDefinitions":  [
+                                 {
+                                     "name":  "app",
+                                     "image":  "PLACEHOLDER_IMAGE",
+                                     "essential":  true,
+                                     "portMappings":  [
+                                                          {
+                                                              "containerPort":  8080,
+                                                              "protocol":  "tcp"
+                                                          }
+                                                      ],
+                                     "environment":  [
+                                                         {
+                                                             "name":  "APP_ENV",
+                                                             "value":  "dev"
+                                                         },
+                                                         {
+                                                             "name":  "PORT",
+                                                             "value":  "8080"
+                                                         }
+                                                     ],
+                                     "logConfiguration":  {
+                                                              "logDriver":  "awslogs",
+                                                              "options":  {
+                                                                              "awslogs-group":  "/ecs/webapp-dev",
+                                                                              "awslogs-region":  "ap-south-2",
+                                                                              "awslogs-stream-prefix":  "app"
+                                                                          }
+                                                          },
+                                     "healthCheck":  {
+                                                         "command":  [
+                                                                         "CMD-SHELL",
+                                                                         "python -c \"import urllib.request,sys; sys.exit(0 if urllib.request.urlopen(\u0027http://127.0.0.1:8080/health\u0027).status==200 else 1)\""
+                                                                     ],
+                                                         "interval":  30,
+                                                         "timeout":  5,
+                                                         "retries":  3,
+                                                         "startPeriod":  10
+                                                     }
+                                 }
+                             ]
 }
